@@ -10,4 +10,4 @@ Entrada modificada por jose
 
 Entrada hecha por Franco Araya
 
-Entrada hecha por Renato Soto
+Entrada hecha por Renato Soto.
