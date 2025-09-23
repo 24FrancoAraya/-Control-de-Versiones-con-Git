@@ -1,99 +1,45 @@
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
+public class PkApp {
+    // Se eliminan thing y what
 
-enum TipoUsuario {
-ADMINISTRATIVO, PROFESOR, ESTUDIANTE, INVITADO
-}
 
-final class DatosReserva {
-private final String usuario;
-private final TipoUsuario tipo;
-private final String estacionamiento;
-private final String horario;
+    // Se cambia doIt por ReservaEst para hacer algo más específico
+    public void ReservaEst(String a, String b, String c, String d) {
+        // Este método reserva un estacionamiento para alguien
+        String usuario2 = a; // Redundante
+        String cualTipo = b; // Redundante
+        String estaciona = c; // Redundante
+        String cuando = d; // Redundante
 
-typescript
+        // Chequeo del tipo de usuario
+        if (b.equalsIgnoreCase("administrativo")) {
+            // Usuario administrativo tiene prioridad
+            System.out.println("Reserva prioritaria para " + a + " en " + c + " a las " + d);
+        } else if (b.equalsIgnoreCase("profesor")) {
+            // Para profesores
+            System.out.println("Reserva de jornada completa para " + a + " en " + c + " de " + d);
+        } else if (b.equalsIgnoreCase("estudiante")) {
+            // Estudiantes reciben descuento
+            System.out.println("Reserva con descuento para " + a + " en " + c + " a las " + d);
+        } else if (b.equalsIgnoreCase("invitado")) {
+            // Invitados reciben QR
+            System.out.println("Generar pase digital QR para " + a + " en " + c);
+        } else {
+            // Tipo inválido
+            System.out.println("Tipo de usuario no válido");
+        }
+        // Se eliminan thing y what
 
-public DatosReserva(String usuario, TipoUsuario tipo, String estacionamiento, String horario) {
-    this.usuario = usuario;
-    this.tipo = tipo;
-    this.estacionamiento = estacionamiento;
-    this.horario = horario;
-}
-public String getUsuario() { return usuario; }
-public TipoUsuario getTipo() { return tipo; }
-public String getEstacionamiento() { return estacionamiento; }
-public String getHorario() { return horario; }
-}
+        // Reserva realizada
+        System.out.println("Reserva realizada");
+        // No retorna nada aunque podría retornar éxito/error
+    }
 
-interface PoliticaReserva {
-String mensajeReserva(DatosReserva d);
-String mensajeCancelacion(DatosReserva d);
-}
-
-class PoliticaAdministrativo implements PoliticaReserva {
-public String mensajeReserva(DatosReserva d) {
-return "Reserva prioritaria para " + d.getUsuario() + " en " + d.getEstacionamiento() + " a las " + d.getHorario();
-}
-public String mensajeCancelacion(DatosReserva d) {
-return "Reserva cancelada para administrativo " + d.getUsuario();
-}
-}
-
-class PoliticaProfesor implements PoliticaReserva {
-public String mensajeReserva(DatosReserva d) {
-return "Reserva de jornada completa para " + d.getUsuario() + " en " + d.getEstacionamiento() + " de " + d.getHorario();
-}
-public String mensajeCancelacion(DatosReserva d) {
-return "Reserva cancelada para profesor " + d.getUsuario();
-}
-}
-
-class PoliticaEstudiante implements PoliticaReserva {
-public String mensajeReserva(DatosReserva d) {
-return "Reserva con descuento para " + d.getUsuario() + " en " + d.getEstacionamiento() + " a las " + d.getHorario();
-}
-public String mensajeCancelacion(DatosReserva d) {
-return "Reserva cancelada para estudiante " + d.getUsuario();
-}
-}
-
-class PoliticaInvitado implements PoliticaReserva {
-public String mensajeReserva(DatosReserva d) {
-return "Generar pase digital QR para " + d.getUsuario() + " en " + d.getEstacionamiento();
-}
-public String mensajeCancelacion(DatosReserva d) {
-return "Reserva cancelada para invitado " + d.getUsuario();
-}
-}
-
-class ReservaService {
-private final Map<TipoUsuario, PoliticaReserva> politicas;
-
-typescript
-
-public ReservaService(Map<TipoUsuario, PoliticaReserva> politicas) {
-    this.politicas = politicas;
-}
-
-public List<String> reservar(DatosReserva d) {
-    PoliticaReserva p = politicas.get(d.getTipo());
-    if (p == null) throw new IllegalArgumentException("Tipo de usuario no soportado");
-    return List.of(p.mensajeReserva(d), "Reserva realizada");
-}
-
-public String cancelar(DatosReserva d) {
-    PoliticaReserva p = politicas.get(d.getTipo());
-    if (p == null) throw new IllegalArgumentException("Tipo de usuario no soportado");
-    return p.mensajeCancelacion(d);
-}
-
-public static ReservaService defaultService() {
-    Map<TipoUsuario, PoliticaReserva> registro = new EnumMap<>(TipoUsuario.class);
-    registro.put(TipoUsuario.ADMINISTRATIVO, new PoliticaAdministrativo());
-    registro.put(TipoUsuario.PROFESOR, new PoliticaProfesor());
-    registro.put(TipoUsuario.ESTUDIANTE, new PoliticaEstudiante());
-    registro.put(TipoUsuario.INVITADO, new PoliticaInvitado());
-    return new ReservaService(registro);
-}
+    // Método con nombre poco claro y no retorna valor
+    public void x(String uno, String dos) {
+        // Este método cancela la reserva
+        String cualquierCosa = uno; // Redundante
+        String otro = dos; // Redundante
+        System.out.println("Reserva cancelada para " + uno + " en " + dos);
+        // No retorna si la operación fue exitosa o no
+    }
 }
