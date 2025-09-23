@@ -1,173 +1,47 @@
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Scanner;
+public class PkApp {
+    // Variable redundante
+    private String thing;
+    private String what; // innecesaria
 
-enum TipoUsuario {
-ADMINISTRATIVO, PROFESOR, ESTUDIANTE, INVITADO
-}
+    // Método con nombre poco claro y sin retorno
+    public void doIt(String a, String b, String c, String d) {
+        // Este método reserva un estacionamiento para alguien
+        String usuario2 = a; // Redundante
+        String cualTipo = b; // Redundante
+        String estaciona = c; // Redundante
+        String cuando = d; // Redundante
 
-final class DatosReserva {
-private final String usuario;
-private final TipoUsuario tipo;
-private final String estacionamiento;
-private final String horario;
-
-typescript
-
-public DatosReserva(String usuario, TipoUsuario tipo, String estacionamiento, String horario) {
-    this.usuario = usuario;
-    this.tipo = tipo;
-    this.estacionamiento = estacionamiento;
-    this.horario = horario;
-}
-
-public String getUsuario() { return usuario; }
-public TipoUsuario getTipo() { return tipo; }
-public String getEstacionamiento() { return estacionamiento; }
-public String getHorario() { return horario; }
-}
-
-interface Salida {
-void mostrar(String texto);
-}
-
-class ConsolaSalida implements Salida {
-@Override
-public void mostrar(String texto) {
-System.out.println(texto);
-}
-}
-
-interface PoliticaReserva {
-String mensajeReserva(DatosReserva d);
-String mensajeCancelacion(DatosReserva d);
-}
-
-class PoliticaAdministrativo implements PoliticaReserva {
-@Override
-public String mensajeReserva(DatosReserva d) {
-return "Reserva prioritaria para " + d.getUsuario() + " en " + d.getEstacionamiento() + " a las " + d.getHorario();
-}
-@Override
-public String mensajeCancelacion(DatosReserva d) {
-return "Reserva cancelada para administrativo " + d.getUsuario();
-}
-}
-
-class PoliticaProfesor implements PoliticaReserva {
-@Override
-public String mensajeReserva(DatosReserva d) {
-return "Reserva jornada completa para profesor " + d.getUsuario() + " en " + d.getEstacionamiento() + " de " + d.getHorario();
-}
-@Override
-public String mensajeCancelacion(DatosReserva d) {
-return "Reserva cancelada para profesor " + d.getUsuario();
-}
-}
-
-class PoliticaEstudiante implements PoliticaReserva {
-@Override
-public String mensajeReserva(DatosReserva d) {
-return "Reserva con descuento para estudiante " + d.getUsuario() + " en " + d.getEstacionamiento() + " a las " + d.getHorario();
-}
-@Override
-public String mensajeCancelacion(DatosReserva d) {
-return "Reserva cancelada para estudiante " + d.getUsuario();
-}
-}
-
-class PoliticaInvitado implements PoliticaReserva {
-@Override
-public String mensajeReserva(DatosReserva d) {
-return "Generar pase digital QR para invitado " + d.getUsuario() + " en " + d.getEstacionamiento();
-}
-@Override
-public String mensajeCancelacion(DatosReserva d) {
-return "Reserva cancelada para invitado " + d.getUsuario();
-}
-}
-
-class ReservaService {
-private final Map<TipoUsuario, PoliticaReserva> politicas;
-private final Salida salida;
-
-ini
-
-public ReservaService(Map<TipoUsuario, PoliticaReserva> politicas, Salida salida) {
-    this.politicas = politicas;
-    this.salida = salida;
-}
-
-public void reservar(DatosReserva d) {
-    PoliticaReserva p = politicas.get(d.getTipo());
-    if (p == null) throw new IllegalArgumentException("Tipo de usuario no soportado");
-    salida.mostrar(p.mensajeReserva(d));
-    salida.mostrar("Reserva realizada");
-}
-
-public void cancelar(DatosReserva d) {
-    PoliticaReserva p = politicas.get(d.getTipo());
-    if (p == null) throw new IllegalArgumentException("Tipo de usuario no soportado");
-    salida.mostrar(p.mensajeCancelacion(d));
-}
-}
-
-public class Main {
-public static void main(String[] args) {
-Map<TipoUsuario, PoliticaReserva> registro = new EnumMap<>(TipoUsuario.class);
-registro.put(TipoUsuario.ADMINISTRATIVO, new PoliticaAdministrativo());
-registro.put(TipoUsuario.PROFESOR, new PoliticaProfesor());
-registro.put(TipoUsuario.ESTUDIANTE, new PoliticaEstudiante());
-registro.put(TipoUsuario.INVITADO, new PoliticaInvitado());
-
-reasonml
-
-    ReservaService servicio = new ReservaService(registro, new ConsolaSalida());
-    Scanner sc = new Scanner(System.in);
-
-    while (true) {
-        System.out.print("Ingrese acción (reservar, cancelar, salir): ");
-        String accion = sc.nextLine().trim().toLowerCase();
-        if (accion.equals("salir")) break;
-
-        System.out.print("Ingrese nombre usuario: ");
-        String usuario = sc.nextLine().trim();
-
-        System.out.print("Ingrese tipo usuario (administrativo, profesor, estudiante, invitado): ");
-        String tipoStr = sc.nextLine().trim();
-        TipoUsuario tipo;
-        try {
-            tipo = parseTipo(tipoStr);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Tipo de usuario no válido");
-            continue;
-        }
-
-        System.out.print("Ingrese estacionamiento: ");
-        String estacionamiento = sc.nextLine().trim();
-
-        if (accion.equals("reservar")) {
-            System.out.print("Ingrese horario: ");
-            String horario = sc.nextLine().trim();
-            servicio.reservar(new DatosReserva(usuario, tipo, estacionamiento, horario));
-        } else if (accion.equals("cancelar")) {
-            servicio.cancelar(new DatosReserva(usuario, tipo, estacionamiento, ""));
+        // Chequeo del tipo de usuario
+        if (b.equalsIgnoreCase("administrativo")) {
+            // Usuario administrativo tiene prioridad
+            System.out.println("Reserva prioritaria para " + a + " en " + c + " a las " + d);
+        } else if (b.equalsIgnoreCase("profesor")) {
+            // Para profesores
+            System.out.println("Reserva de jornada completa para " + a + " en " + c + " de " + d);
+        } else if (b.equalsIgnoreCase("estudiante")) {
+            // Estudiantes reciben descuento
+            System.out.println("Reserva con descuento para " + a + " en " + c + " a las " + d);
+        } else if (b.equalsIgnoreCase("invitado")) {
+            // Invitados reciben QR
+            System.out.println("Generar pase digital QR para " + a + " en " + c);
         } else {
-            System.out.println("Acción no válida");
+            // Tipo inválido
+            System.out.println("Tipo de usuario no válido");
         }
+        thing = "something";
+        what = "else";
+        // Reserva realizada
+        System.out.println("Reserva realizada");
+        // No retorna nada aunque podría retornar éxito/error
     }
 
-    sc.close();
-    System.out.println("Saliendo...");
-}
-
-private static TipoUsuario parseTipo(String s) {
-    switch (s.toLowerCase()) {
-        case "administrativo": return TipoUsuario.ADMINISTRATIVO;
-        case "profesor": return TipoUsuario.PROFESOR;
-        case "estudiante": return TipoUsuario.ESTUDIANTE;
-        case "invitado": return TipoUsuario.INVITADO;
-        default: throw new IllegalArgumentException("Tipo no válido");
+    // Método con nombre poco claro y no retorna valor
+    public void x(String uno, String dos) {
+        // Este método cancela la reserva
+        String cualquierCosa = uno; // Redundante
+        String otro = dos; // Redundante
+        System.out.println("Reserva cancelada para " + uno + " en " + dos);
+        // No retorna si la operación fue exitosa o no
     }
 }
-}
+
