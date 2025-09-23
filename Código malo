@@ -1,0 +1,45 @@
+public class PkApp {
+    // Se eliminan thing y what
+
+
+    // Se cambia doIt por ReservaEst para hacer algo más específico
+    public void ReservaEst(String a, String b, String c, String d) {
+        // Este método reserva un estacionamiento para alguien
+        String usuario2 = a; // Redundante
+        String cualTipo = b; // Redundante
+        String estaciona = c; // Redundante
+        String cuando = d; // Redundante
+
+        // Chequeo del tipo de usuario
+        if (b.equalsIgnoreCase("administrativo")) {
+            // Usuario administrativo tiene prioridad
+            System.out.println("Reserva prioritaria para " + a + " en " + c + " a las " + d);
+        } else if (b.equalsIgnoreCase("profesor")) {
+            // Para profesores
+            System.out.println("Reserva de jornada completa para " + a + " en " + c + " de " + d);
+        } else if (b.equalsIgnoreCase("estudiante")) {
+            // Estudiantes reciben descuento
+            System.out.println("Reserva con descuento para " + a + " en " + c + " a las " + d);
+        } else if (b.equalsIgnoreCase("invitado")) {
+            // Invitados reciben QR
+            System.out.println("Generar pase digital QR para " + a + " en " + c);
+        } else {
+            // Tipo inválido
+            System.out.println("Tipo de usuario no válido");
+        }
+        // Se eliminan thing y what
+
+        // Reserva realizada
+        System.out.println("Reserva realizada");
+        // No retorna nada aunque podría retornar éxito/error
+    }
+
+    // Método con nombre poco claro y no retorna valor
+    public void x(String uno, String dos) {
+        // Este método cancela la reserva
+        String cualquierCosa = uno; // Redundante
+        String otro = dos; // Redundante
+        System.out.println("Reserva cancelada para " + uno + " en " + dos);
+        // No retorna si la operación fue exitosa o no
+    }
+}
