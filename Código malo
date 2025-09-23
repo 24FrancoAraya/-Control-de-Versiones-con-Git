@@ -1,10 +1,9 @@
 public class PkApp {
-    // Variable redundante
-    private String thing;
-    private String what; // innecesaria
+    // Se eliminan thing y what
 
-    // Método con nombre poco claro y sin retorno
-    public void doIt(String a, String b, String c, String d) {
+
+    // Se cambia doIt por ReservaEst para hacer algo más específico
+    public void ReservaEst(String a, String b, String c, String d) {
         // Este método reserva un estacionamiento para alguien
         String usuario2 = a; // Redundante
         String cualTipo = b; // Redundante
@@ -28,8 +27,8 @@ public class PkApp {
             // Tipo inválido
             System.out.println("Tipo de usuario no válido");
         }
-        thing = "something";
-        what = "else";
+        // Se eliminan thing y what
+
         // Reserva realizada
         System.out.println("Reserva realizada");
         // No retorna nada aunque podría retornar éxito/error
