@@ -1,45 +1,58 @@
-public class PkApp {
-    // Se eliminan thing y what
+import java.util.Objects;
 
+// 1. Clase de Dominio para agrupar los datos de la reserva de forma clara
+final class ReservationData {
+    private final String user;
+    private final UserType userType;
+    private final String parkingSpot;
+    private final String time;
 
-    // Se cambia doIt por ReservaEst para hacer algo más específico
-    public void ReservaEst(String a, String b, String c, String d) {
-        // Este método reserva un estacionamiento para alguien
-        String usuario2 = a; // Redundante
-        String cualTipo = b; // Redundante
-        String estaciona = c; // Redundante
-        String cuando = d; // Redundante
-
-        // Chequeo del tipo de usuario
-        if (b.equalsIgnoreCase("administrativo")) {
-            // Usuario administrativo tiene prioridad
-            System.out.println("Reserva prioritaria para " + a + " en " + c + " a las " + d);
-        } else if (b.equalsIgnoreCase("profesor")) {
-            // Para profesores
-            System.out.println("Reserva de jornada completa para " + a + " en " + c + " de " + d);
-        } else if (b.equalsIgnoreCase("estudiante")) {
-            // Estudiantes reciben descuento
-            System.out.println("Reserva con descuento para " + a + " en " + c + " a las " + d);
-        } else if (b.equalsIgnoreCase("invitado")) {
-            // Invitados reciben QR
-            System.out.println("Generar pase digital QR para " + a + " en " + c);
-        } else {
-            // Tipo inválido
-            System.out.println("Tipo de usuario no válido");
-        }
-        // Se eliminan thing y what
-
-        // Reserva realizada
-        System.out.println("Reserva realizada");
-        // No retorna nada aunque podría retornar éxito/error
+    public ReservationData(String user, UserType userType, String parkingSpot, String time) {
+        this.user = Objects.requireNonNull(user);
+        this.userType = Objects.requireNonNull(userType);
+        this.parkingSpot = Objects.requireNonNull(parkingSpot);
+        this.time = Objects.requireNonNull(time);
     }
 
-    // Método con nombre poco claro y no retorna valor
-    public void x(String uno, String dos) {
-        // Este método cancela la reserva
-        String cualquierCosa = uno; // Redundante
-        String otro = dos; // Redundante
-        System.out.println("Reserva cancelada para " + uno + " en " + dos);
-        // No retorna si la operación fue exitosa o no
+    public String getUser() { return user; }
+    public UserType getUserType() { return userType; }
+    public String getParkingSpot() { return parkingSpot; }
+    public String getTime() { return time; }
+}
+
+// 2. Enum para evitar errores tipográficos en el tipo de usuario
+enum UserType {
+    ADMINISTRATIVE,
+    PROFESSOR,
+    STUDENT,
+    GUEST,
+    UNKNOWN
+}
+
+// 3. Servicio principal que maneja la lógica de negocio
+public class ParkingService {
+
+    // Método principal para realizar una reserva
+    public String makeReservation(ReservationData data) {
+        String confirmationMessage = "Reserva realizada";
+
+        switch (data.getUserType()) {
+            case ADMINISTRATIVE:
+                return "Reserva prioritaria para " + data.getUser() + " en " + data.getParkingSpot() + " a las " + data.getTime() + "\n" + confirmationMessage;
+            case PROFESSOR:
+                return "Reserva de jornada completa para " + data.getUser() + " en " + data.getParkingSpot() + " de " + data.getTime() + "\n" + confirmationMessage;
+            case STUDENT:
+                return "Reserva con descuento para " + data.getUser() + " en " + data.getParkingSpot() + " a las " + data.getTime() + "\n" + confirmationMessage;
+            case GUEST:
+                return "Generar pase digital QR para " + data.getUser() + " en " + data.getParkingSpot() + "\n" + confirmationMessage;
+            default:
+                return "Tipo de usuario no válido";
+        }
+    }
+
+    // 4. Método para cancelar una reserva con un retorno claro
+    public boolean cancelReservation(String user, String parkingSpot) {
+        System.out.println("Reserva cancelada para " + user + " en " + parkingSpot);
+        return true; // Retorna 'true' para indicar éxito en la operación.
     }
 }
