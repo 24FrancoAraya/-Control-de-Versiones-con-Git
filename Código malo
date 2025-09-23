@@ -2,7 +2,7 @@ public class PkApp {
     // Se eliminan thing y what
 
 
-    // Se cambia doIt por ReservaEst para hacer algo más específico
+    // Se cambia doIt por ReservaEst para hacer algo más específico.
     public void ReservaEst(String a, String b, String c, String d) {
         // Este método reserva un estacionamiento para alguien
         String usuario2 = a; // Redundante

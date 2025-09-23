@@ -1,5 +1,5 @@
 Documentacion hecha por:
-Sebastian Alvear - Reichell Ardiaca - Franco Araya - José Cataldo - Renato Soto.
+Sebastian Alvear - Reichell Ardiaca - Franco Araya - José Cataldo - Renato Soto
 
 
 Sistema de reservas de estacionamiento para la Universidad Bernardo O´higgins.
