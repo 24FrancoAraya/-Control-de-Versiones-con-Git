@@ -20,10 +20,11 @@ def registrar_usuario(rut, nombre, apellido, patente, contraseña):
     conn = sqlite3.connect('usuarios.db')
     cursor = conn.cursor()
     
-  
+ 
     hashed_password = hashlib.md5(contraseña.encode()).hexdigest()
 
     try:
+     
         cursor.execute("""
             INSERT INTO usuarios (rut, nombre, apellido, patente, contraseña)
             VALUES (?, ?, ?, ?, ?)""", (rut, nombre, apellido, patente, hashed_password))
@@ -38,10 +39,10 @@ def login_usuario(rut, contraseña):
     conn = sqlite3.connect('usuarios.db')
     cursor = conn.cursor()
     
-  
+   
     hashed_password = hashlib.md5(contraseña.encode()).hexdigest()
 
-   
+
     query = f"SELECT * FROM usuarios WHERE rut='{rut}' AND contraseña='{hashed_password}'"
     
     cursor.execute(query) 
