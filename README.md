@@ -1,7 +1,14 @@
-Entrada hecha por Sebastian Alvear
+Documentacion hecha por:
+Sebastian Alvear - Reichell Ardiaca - Franco Araya - José Cataldo - Renato Soto
 
-Entrada Modificada por Sebastian Alvear
 
-Entrada hecha por Reichell Ardiaca :D
+Sistema de reservas de estacionamiento para la Universidad Bernardo O´higgins.
 
-Entrada Modificada por Reichell Ardiaca :D
+Este proyecto es un sistema de gestión de reservas de estacionamientos para el campus, diseñado para reducir las filas y optimizar el uso de los espacios. El sistema se desarrolla en Java y se basa en principios de Clean Code y diseño orientado a objetos para asegurar que sea extensible y fácil de mantener
+
+Modificación: Sebastian Alvear
+
+Cambios realizados por Sebastian Alvear:
+- Adapté el código a Python.
+- Creé la base de datos simple "usuarios".
+- Creé la interfaz para poder añadir usuarios y el login.
