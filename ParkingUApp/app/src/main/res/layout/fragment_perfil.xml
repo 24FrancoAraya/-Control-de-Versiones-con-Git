@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    tools:context=".ui.perfil.PerfilFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_perfil"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorSurface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:contentDescription="Logo Universidad"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher_foreground"
+            app:tint="?attr/colorPrimary" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <View
+        android:id="@+id/view_placeholder_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/colorSurfaceVariant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_perfil" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_ingreso_vehiculo"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="?attr/colorSurfaceVariant"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/card_historial_reservas"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/card_historial_reservas"
+        app:layout_constraintTop_toBottomOf="@id/view_placeholder_top"
+        app:strokeColor="?attr/colorOutline"
+        app:strokeWidth="1dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Ingreso de vehiculo"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            tools:layout_editor_absoluteX="150dp"
+            tools:layout_editor_absoluteY="274dp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_cerrar_sesion"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="-1dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="?attr/colorSurfaceVariant"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_historial_reservas"
+        app:strokeColor="?attr/colorOutline"
+        app:strokeWidth="1dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Cerrar sesion"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            tools:layout_editor_absoluteX="173dp"
+            tools:layout_editor_absoluteY="433dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_QR_Scan"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="-1dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="?attr/colorSurfaceVariant"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
+            app:strokeColor="?attr/colorOutline"
+            app:strokeWidth="1dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Historial de reservas"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                tools:layout_editor_absoluteX="146dp"
+                tools:layout_editor_absoluteY="354dp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_historial_reservas"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="-1dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="?attr/colorSurfaceVariant"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/card_cerrar_sesion"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/card_cerrar_sesion"
+        app:layout_constraintTop_toBottomOf="@id/card_ingreso_vehiculo"
+        app:strokeColor="?attr/colorOutline"
+        app:strokeWidth="1dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Historial de reservas"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            tools:layout_editor_absoluteX="146dp"
+            tools:layout_editor_absoluteY="354dp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:id="@+id/view_placeholder_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/colorSurfaceVariant"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_cerrar_sesion" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="card_cerrar_sesion,card_historial_reservas,card_ingreso_vehiculo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
